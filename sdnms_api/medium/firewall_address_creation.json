@@ -1,0 +1,29 @@
+{
+    "title": "Create Firewall Address",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": ["FQDN", "IP Range", "Subnet"]
+        },
+        "content": {
+            "type": "string"
+        },
+        "interface": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "comment": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "name",
+        "type",
+        "content",
+        "interface"
+    ]
+}
