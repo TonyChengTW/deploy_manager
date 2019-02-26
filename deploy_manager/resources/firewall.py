@@ -5,9 +5,9 @@ from falcon.media.validators.jsonschema import validate
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 
-from sdnms_api.models.firewall import FirewallAddressModel
-from sdnms_api.resources.base_resource import BaseResource
-from sdnms_api.medium import load_schema
+from deploy_manager.models.firewall import FirewallAddressModel
+from deploy_manager.resources.base_resource import BaseResource
+from deploy_manager.medium import load_schema
 
 
 class FirewallAddressResource(BaseResource):
@@ -124,7 +124,7 @@ class FirewallServiceResource(BaseResource):
 class FirewallDeviceResource(BaseResource):
 
     def on_get(self, req, resp):
-        from sdnms_api.backends.manager import BackendManager
+        from deploy_manager.backends.manager import BackendManager
         m = BackendManager()
         m.use_firewall()
         res = m.call_firewall(method='info')

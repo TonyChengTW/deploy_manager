@@ -8,8 +8,8 @@ import requests
 from netmiko import Netmiko
 from oslo_config import cfg
 from oslo_log import log
-from sdnms_api.models.manager import DBManager
-from fw_fortinet_v5_6_3.cache import Cache
+from deploy_manager.models.manager import DBManager
+from ip_manager_v1.cache import Cache
 
 LOG = log.getLogger(__name__)
 
@@ -44,7 +44,7 @@ class Driver(object):
         dbmgr.setup()
 
     def _load_conf(self, conf):
-        # Load sdnms_api.ini to fetch database options
+        # Load deploy_manager.ini to fetch database options
         self.db_address = conf.database.address
         self.db_port = conf.database.port
         self.db_username = conf.database.username
@@ -53,7 +53,7 @@ class Driver(object):
 
         # Load fw_fortinet.ini to fetch firewall options
         fwid_opts = [
-            cfg.StrOpt('fw',
+            cfg.StrOpt('host_id',
                        help='firewalls list'),
             ]
         conf.register_opts(fwid_opts, group='identities')
@@ -63,7 +63,7 @@ class Driver(object):
 
         ftg_opts = [
             cfg.StrOpt('access_token',
-                       default='',
+                       default='aaa',
                        help='restful api for restful api'),
             cfg.StrOpt('http_scheme',
                        help='http or https protocol for restful api'),
@@ -77,6 +77,7 @@ class Driver(object):
             cfg.StrOpt('http_password',
                        help='The backend password for restful api login'),
             cfg.StrOpt('ssh_host',
+                       default='root',
                        help='backend IP which provides CLI endpoint'),
             cfg.PortOpt('ssh_port',
                         default=22,

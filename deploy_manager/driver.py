@@ -5,9 +5,9 @@ LOG = log.getLogger(__name__)
 
 
 class DriverLoader(object):
-    NAMESPACE_FIREWALL = 'backend.fw.drivers'
-    NAMESPACE_WAF = 'backend.waf.drivers'
-    NAMESPACE_SWITCH = 'backend.switch.drivers'
+    NAMESPACE_IP = 'ip_manager.drivers'
+    NAMESPACE_HOSTNAME = 'hostname_manager.drivers'
+    NAMESPACE_UPGRADE = 'upgrade_manager.drivers'
 
     def __init__(self):
         self._drivers = {}
@@ -16,20 +16,20 @@ class DriverLoader(object):
     def setup(self, conf):
         LOG.info("setup conf: %s", conf.backends.items())
         self._conf = conf
-        if conf.backends.fw_driver:
-            driver_name = conf.backends.fw_driver
-            driver = self._load_driver(self.NAMESPACE_FIREWALL, driver_name)
-            self._drivers['firewall'] = driver
+        if conf.backends.ip_manager_driver:
+            driver_name = conf.backends.ip_manager_driver
+            driver = self._load_driver(self.NAMESPACE_IP, driver_name)
+            self._drivers['ip_manager'] = driver
         
-        if conf.backends.waf_driver:
-            driver_name = conf.backends.waf_driver
-            driver = self._load_driver(self.NAMESPACE_WAF, driver_name)
-            self._drivers['waf'] = driver
+        if conf.backends.hostname_manager_driver:
+            driver_name = conf.backends.hostname_manager_driver
+            driver = self._load_driver(self.NAMESPACE_HOSTNAME, driver_name)
+            self._drivers['hostname_manager'] = driver
         
         if conf.backends.switch_driver:
-            driver_name = conf.backends.switch_driver
-            driver = self._load_driver(self.NAMESPACE_SWITCH, driver_name)
-            self._drivers['switch'] = driver
+            driver_name = conf.backends.upgrade_manager_driver
+            driver = self._load_driver(self.NAMESPACE_UPGRADE, driver_name)
+            self._drivers['upgrade_manager'] = driver
 
     def _load_driver(self, namespace, name, invoke_load=True):
         try:
@@ -52,13 +52,13 @@ class DriverLoader(object):
         except KeyError:
             return None
 
-    def firewall_driver(self):
-        return self.get_driver('firewall')
+    def ip_manager_driver(self):
+        return self.get_driver('ip_manager')
 
-    def waf_driver(self):
-        return self.get_driver('waf')
+    def hostname_manager_driver(self):
+        return self.get_driver('hostname_manager')
 
-    def switch_driver(self):
-        return self.get_driver('switch')
+    def upgrade_manager_driver(self):
+        return self.get_driver('upgrade_manager')
 
 loader = DriverLoader()

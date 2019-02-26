@@ -4,7 +4,7 @@ CONF = cfg.CONF
 
 default_opts = [
     cfg.StrOpt('name',
-                default='cc_iaas_sdnms',
+                default='deploy_manager',
                 help='Process name.'),
 ]
 
@@ -18,34 +18,34 @@ database_opts = [
                help='The database user of login'),
     cfg.StrOpt('password', default='root',
                help='The database password of login'),
-    cfg.StrOpt('database_name', default='sdnms_api',
+    cfg.StrOpt('database_name', default='deploy_manager',
                help='Used database name'),
     ]
 
 dispatcher_opts = [
     cfg.StrOpt('health',
-               default='sdnms_api.resources.health:HealthResource',
+               default='deploy_manager.resources.health:HealthResource',
                help='HealthResource controller'),
     cfg.StrOpt('firewall_address',
-               default='sdnms_api.resources.firewall:FirewallAddressResource',
+               default='deploy_manager.resources.firewall:FirewallAddressResource',
                help='FirewallAddressResource controller'),
     cfg.StrOpt('firewall_device',
-               default='sdnms_api.resources.firewall:FirewallDeviceResource',
+               default='deploy_manager.resources.firewall:FirewallDeviceResource',
                help='FirewallDeviceResource controller'),
 ]
 
 backends_opts = [
-    cfg.StrOpt('fw_driver', default='', help='The firewall plugin will use'),
-    cfg.StrOpt('waf_driver', default='', help='The WAF plugin will use'),
-    cfg.StrOpt('switch_driver', default='', help='The switch plugin will use'),
+    cfg.StrOpt('ip_manager_driver', default='ipv4', help='The ipv4 plugin will use'),
+    cfg.StrOpt('hostname_manager_driver', default='hostname', help='The hostname plugin will use'),
+    cfg.StrOpt('upgrade_manager_driver', default='apt_package', help='The apt upgrade plugin will use'),
 ]
 
 def init(args=None, config_file=None):
     cfg.CONF(args=args,
-         project='SDNMS',
+         project='DEPLOY_MANAGER',
          version="1.0",
          default_config_files=[config_file],
-         description='SDNMS RESTful API')
+         description='Deploy Server RESTful API')
 
     cfg.CONF.register_opts(default_opts)
     cfg.CONF.register_opts(database_opts, group='database')

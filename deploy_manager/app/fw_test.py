@@ -3,12 +3,12 @@ import os
 import sys
 
 from oslo_log import log
-from sdnms_api.models.manager import DBManager
-from sdnms_api.utils import simport
-from sdnms_api.resources import health
-from sdnms_api.resources import firewall
-from sdnms_api import config
-from sdnms_api.driver import loader
+from deploy_manager.models.manager import DBManager
+from deploy_manager.utils import simport
+from deploy_manager.resources import health
+from deploy_manager.resources import firewall
+from deploy_manager import config
+from deploy_manager.driver import loader
 
 import pdb
 
@@ -17,11 +17,11 @@ CONF = config.CONF
 
 
 def run_test(config_file=None):
-#    config_files = ['/home/tony/proj/cc-iaas-sdnms/etc/sdnms_api/sdnms_api.ini',
-#                   '/home/tony/proj/cc-iaas-sdnms/etc/sdnms_api/backends/fw_fortinet_v5.6.3.ini'
+#    config_files = ['/home/tony/proj/cc-iaas-sdnms/etc/deploy_manager/deploy_manager.ini',
+#                   '/home/tony/proj/cc-iaas-sdnms/etc/deploy_manager/backends/fw_fortinet_v5.6.3.ini'
 #                   ]
     if config_file is None:
-        config_file = '/etc/sdnms_api/sdnms_api.ini'
+        config_file = '/etc/deploy_manager/deploy_manager.ini'
 
     log.register_options(CONF)
     config.init(config_file = config_file)
@@ -30,7 +30,7 @@ def run_test(config_file=None):
 
     log.setup(CONF, 'test1')
 
-    from sdnms_api.backends.manager import BackendManager
+    from deploy_manager.backends.manager import BackendManager
     m = BackendManager()
     # -------- Use Firewall -------------------------------------------------
     # m.use_firewall(index=1)

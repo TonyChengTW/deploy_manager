@@ -3,10 +3,10 @@
 from setuptools import setup
 
 setup(
-    name='cc-iaas-sdnms',
+    name='deploy_manager',
     version='1.0.0',
-    description=('cc-iaas-sdnms'),
-    long_description='cc-iaas-sdnms',
+    description=('deploy_manager'),
+    long_description='deploy pxe manager for changing IP and hostname',
     license='Apache v2',
     classifiers=[
         'Programming Language :: Python :: 2.7',
@@ -14,16 +14,16 @@ setup(
     zip_safe=False,
     entry_points={
         'console_scripts': [
-            'cc-iaas-sdnms = cc_iaas_sdnms.app.server:launch'
+            'deploy_manager = deploy_manager.app.server:launch'
         ],
-        'backend.fw.drivers': [
-            'fw_fortinet_v5_6_3 = fw_fortinet_v5_6_3.driver:Driver'
+        'ip_manager.drivers': [
+            'ipv4 = ip_manager_v1.driver:Driver'
         ],
-        'backend.waf.drivers': [
-            'waf_f5_v13_1 = waf_f5_v13_1.driver:Driver'
+        'hostname_manager.drivers': [
+            'hostname = hostname_manager_v1.driver:Driver'
         ],
-        'backend.switch.drivers': [
-            'sw_mellanox_sn2410 = sw_mellanox_sn2410.driver:Driver'
+        'upgrade_manager.drivers': [
+            'apt_package = upgrade_manager_v1.driver:Driver'
         ]
     },
 )

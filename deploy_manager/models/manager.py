@@ -4,7 +4,7 @@ from sqlalchemy.orm import scoping
 
 # Needed by the setup method as we want to make sure
 # all models are loaded before we call create_all(...)
-from sdnms_api.models import firewall
+from deploy_manager.models import firewall
 
 
 class DBManager(object):

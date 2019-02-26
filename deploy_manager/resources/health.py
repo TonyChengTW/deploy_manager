@@ -1,6 +1,6 @@
 import falcon
 
-from sdnms_api.resources.base_resource import BaseResource
+from deploy_manager.resources.base_resource import BaseResource
 
 class HealthResource(BaseResource):
     def on_get(self, req, resp):

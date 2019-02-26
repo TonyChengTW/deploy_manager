@@ -1,4 +1,4 @@
-from sdnms_api.driver import loader
+from deploy_manager.driver import loader
 
 """
 from oslo_config import cfg
@@ -6,9 +6,9 @@ from oslo_config import cfg
 import pdb
 
 cfg.CONF(args=None,
-         project='SDNMS',
+         project='DEPLOY_MANAGER',
          version="1.0",
-         default_config_files='etc/sdnms_api/backends/fw_fortinet_v5.6.3.ini',
+         default_config_files='etc/deploy_manager/backends/ip_manager.ini',
          description='SDNMS Forti')
 
 conf=cfg.CONF
@@ -40,8 +40,8 @@ class SampleSwitch(object):
 class BackendManager(object):
     """Sample usage
 
-    from sdnms_api.backends.selector import SampleSelector
-    from sdnms_api.backends.manager import BackendManager
+    from deploy_manager.backends.selector import SampleSelector
+    from deploy_manager.backends.manager import BackendManager
     m = BackendManager()
     m.use_firewall()
     m.call_firewall(method='info')
