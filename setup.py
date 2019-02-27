@@ -1,18 +1,14 @@
 #!/usr/bin/env python
+import setuptools
 
-from setuptools import setup, find_packages
+# In python < 2.7.4, a lazy loading of package `pbr` will break
+# setuptools if some other modules registered functions in `atexit`.
+# solution from: http://bugs.python.org/issue15881#msg170215
+try:
+    import multiprocessing  # noqa
+except ImportError:
+    pass
 
-setup(
-    name='deploy_manager',
-    version='1.0.0',
-    description=('deploy_manager'),
-    long_description='deploy pxe manager for changing IP and hostname',
-    license='Apache v2',
-    classifiers=[
-        'Programming Language :: Python :: 2.7',
-    ],
-    zip_safe=False,
-    include_package_data=True,
-    packages=find_packages("."),
-
-)
+setuptools.setup(
+    setup_requires=['pbr>=2.0.0'],
+    pbr=True)
