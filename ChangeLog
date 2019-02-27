@@ -1,0 +1,7 @@
+CHANGES
+=======
+
+* use pbr to install
+* add find\_package()
+* refactor with uncomplete
+* IaaS API upload
