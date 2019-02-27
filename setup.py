@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='deploy_manager',
@@ -12,18 +12,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     zip_safe=False,
-    entry_points={
-        'console_scripts': [
-            'deploy_manager = deploy_manager.app.server:launch'
-        ],
-        'ip_manager.drivers': [
-            'ipv4 = ip_manager_v1.driver:Driver'
-        ],
-        'hostname_manager.drivers': [
-            'hostname = hostname_manager_v1.driver:Driver'
-        ],
-        'upgrade_manager.drivers': [
-            'apt_package = upgrade_manager_v1.driver:Driver'
-        ]
-    },
+    include_package_data=True,
+    packages=find_packages("."),
+
 )
