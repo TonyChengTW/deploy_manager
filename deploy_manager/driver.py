@@ -5,9 +5,9 @@ LOG = log.getLogger(__name__)
 
 
 class DriverLoader(object):
-    NAMESPACE_IP = 'ip_manager.drivers'
-    NAMESPACE_HOSTNAME = 'hostname_manager.drivers'
-    NAMESPACE_UPGRADE = 'upgrade_manager.drivers'
+    NAMESPACE_IP = 'backend.ip.drivers'
+    NAMESPACE_HOSTNAME = 'backend.hostname.drivers'
+    NAMESPACE_UPGRADE = 'backend.upgrade.drivers'
 
     def __init__(self):
         self._drivers = {}
