@@ -40,8 +40,6 @@ class BackendManager(object):
     m.call_firewall(method='info')
     """
     def __init__(self):
-        import pdb
-        pdb.set_trace()
         self._ip_manager = loader.ip_manager_driver()
 
     def set_ip_by_mac(self, index=0, identity=None, selector=None):

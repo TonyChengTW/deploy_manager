@@ -27,7 +27,7 @@ class Driver(object):
 
     def __init__(self, conf):
         self._load_conf(conf)
-        pass()
+
 
     def _load_conf(self, conf):
         # Load sdnms_api.ini to fetch database options
