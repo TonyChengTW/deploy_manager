@@ -9,6 +9,7 @@ from deploy_manager.resources import status
 from deploy_manager.resources import firewall
 from deploy_manager import config
 from deploy_manager.driver import loader
+from deploy_manager.backends.manager import BackendManager
 
 
 LOG = log.getLogger(__name__)
@@ -36,8 +37,11 @@ def launch(config_file=None):
     #mgr.setup()
 
     app = falcon.API()
-    status = simport.load(CONF.dispatcher.status)(mgr)
+    status = simport.load(CONF.dispatcher.status)()
     app.add_route("/status", status)
+
+    ip_mapper = BackendManager()
+    app.add_route("/ip_mapper", ip_mapper)
     #firewall_address = simport.load(CONF.dispatcher.firewall_address)(mgr)
     #app.add_route("/firewall/address", firewall_address)
 
@@ -50,5 +54,5 @@ def get_wsgi_app(config_base_path=None, **kwargs):
 if __name__ == '__main__':
     from wsgiref import simple_server
     httpd = simple_server.make_server('127.0.0.1', 7878, get_wsgi_app())
-    LOG.info('Starting server %s at %s:%s',httpd,'127.0.0.1',8000)
+    LOG.info('Starting server %s at %s:%s',httpd,'127.0.0.1',7878)
     httpd.serve_forever()

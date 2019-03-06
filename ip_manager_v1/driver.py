@@ -1,3 +1,4 @@
+import falcon
 import re
 import urllib3
 import socket
@@ -48,3 +49,10 @@ class Driver(object):
         identities_hosts_str = conf.identities.hosts
         hosts = [x for x in identities_hosts_str.split(',')]
         self.hosts = hosts
+
+    def on_get(self, req, resp):
+        resp.status = falcon.HTTP_200
+        #resp.body = ('{"result":"OK"}')
+        resp.media = {
+            'hosts' : self.hosts
+        }
