@@ -17,12 +17,12 @@ def run_test(config_file=None):
     config_file = ['/etc/deploy_manager/deploy_manager.ini',
                    '/etc/deploy_manager/backends/ip_manager.ini'
                    ]
-    #if config_file is None:
+    # if config_file is None:
     #    config_file = '/etc/deploy_manager/deploy_manager.ini'
 
     log.register_options(CONF)
-    config.init(config_file = config_file)
     pdb.set_trace()
+    config.init(config_file = config_file)
     loader.setup(CONF)
 
     log.setup(CONF, 'test1')
