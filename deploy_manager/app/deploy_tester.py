@@ -14,15 +14,15 @@ LOG = log.getLogger(__name__)
 CONF = config.CONF
 
 def run_test(config_file=None):
-#    config_files = ['/home/tony/proj/cc-iaas-sdnms/etc/deploy_manager/deploy_manager.ini',
-#                   '/home/tony/proj/cc-iaas-sdnms/etc/deploy_manager/backends/fw_fortinet_v5.6.3.ini'
-#                   ]
-    if config_file is None:
-        config_file = '/etc/deploy_manager/deploy_manager.ini'
+    config_file = ['/etc/deploy_manager/deploy_manager.ini',
+                   '/etc/deploy_manager/backends/ip_manager.ini'
+                   ]
+    #if config_file is None:
+    #    config_file = '/etc/deploy_manager/deploy_manager.ini'
 
     log.register_options(CONF)
     config.init(config_file = config_file)
-    # pdb.set_trace()
+    pdb.set_trace()
     loader.setup(CONF)
 
     log.setup(CONF, 'test1')

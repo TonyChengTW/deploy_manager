@@ -15,14 +15,6 @@ LOG = log.getLogger(__name__)
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-cfg.CONF(args=None,
-         project='IP_MANAGER',
-         version="1.0",
-         default_config_files='/etc/deploy_manager/backends/ip_manager.ini',
-         description='Change IP')
-
-conf=cfg.CONF
-
 class Driver(object):
 
     def __init__(self, conf):
