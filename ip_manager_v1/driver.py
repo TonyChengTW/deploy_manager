@@ -47,5 +47,5 @@ class Driver(object):
         conf.register_opts(ip_manager_opts, group='identities')
         identities_hosts_str = conf.identities.hosts
         hosts = [x for x in identities_hosts_str.split(',')]
-        self.fw_identities = hosts
+        self.hosts = hosts
 

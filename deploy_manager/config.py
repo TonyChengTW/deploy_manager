@@ -44,7 +44,7 @@ def init(args=None, config_file=None):
     cfg.CONF(args=args,
          project='DEPLOY_MANAGER',
          version="1.0",
-         default_config_files=[config_file],
+         default_config_files=config_file,
          description='Deploy Server RESTful API')
 
     cfg.CONF.register_opts(default_opts)

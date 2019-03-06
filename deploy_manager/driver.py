@@ -6,8 +6,6 @@ LOG = log.getLogger(__name__)
 
 class DriverLoader(object):
     NAMESPACE_IP = 'backend.ip.drivers'
-    NAMESPACE_HOSTNAME = 'backend.hostname.drivers'
-    NAMESPACE_UPGRADE = 'backend.upgrade.drivers'
 
     def __init__(self):
         self._drivers = {}
@@ -21,16 +19,6 @@ class DriverLoader(object):
             driver = self._load_driver(self.NAMESPACE_IP, driver_name)
             self._drivers['ip_manager'] = driver
         
-        if conf.backends.hostname_manager_driver:
-            driver_name = conf.backends.hostname_manager_driver
-            driver = self._load_driver(self.NAMESPACE_HOSTNAME, driver_name)
-            self._drivers['hostname_manager'] = driver
-        
-        if conf.backends.switch_driver:
-            driver_name = conf.backends.upgrade_manager_driver
-            driver = self._load_driver(self.NAMESPACE_UPGRADE, driver_name)
-            self._drivers['upgrade_manager'] = driver
-
     def _load_driver(self, namespace, name, invoke_load=True):
         try:
             LOG.info("Attempting to import driver %s:%s", namespace, name)
@@ -54,11 +42,5 @@ class DriverLoader(object):
 
     def ip_manager_driver(self):
         return self.get_driver('ip_manager')
-
-    def hostname_manager_driver(self):
-        return self.get_driver('hostname_manager')
-
-    def upgrade_manager_driver(self):
-        return self.get_driver('upgrade_manager')
 
 loader = DriverLoader()
