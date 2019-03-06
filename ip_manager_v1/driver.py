@@ -48,4 +48,3 @@ class Driver(object):
         identities_hosts_str = conf.identities.hosts
         hosts = [x for x in identities_hosts_str.split(',')]
         self.hosts = hosts
-

@@ -4,7 +4,7 @@ import sys
 from oslo_log import log
 from deploy_manager.models.manager import DBManager
 from deploy_manager.utils import simport
-from deploy_manager.resources import health
+from deploy_manager.resources import status
 from deploy_manager import config
 from deploy_manager.driver import loader
 

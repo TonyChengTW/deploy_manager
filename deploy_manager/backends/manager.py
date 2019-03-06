@@ -1,17 +1,5 @@
 from deploy_manager.driver import loader
 
-""""
-from oslo_config import cfg
-
-cfg.CONF(args=None,
-         project='DEPLOY_MANAGER',
-         version="1.0",
-         default_config_files='/etc/deploy_manager/deploy_manager.ini',
-         description='Deploy env changer')
-
-conf=cfg.CONF
-"""
-
 class SampleFirewall(object):
     def use(self, index, identity):
         self._index = index

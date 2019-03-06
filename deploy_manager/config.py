@@ -23,15 +23,15 @@ database_opts = [
     ]
 
 dispatcher_opts = [
-    cfg.StrOpt('health',
-               default='deploy_manager.resources.health:HealthResource',
-               help='HealthResource controller'),
-    cfg.StrOpt('firewall_address',
-               default='deploy_manager.resources.firewall:FirewallAddressResource',
-               help='FirewallAddressResource controller'),
-    cfg.StrOpt('firewall_device',
-               default='deploy_manager.resources.firewall:FirewallDeviceResource',
-               help='FirewallDeviceResource controller'),
+    cfg.StrOpt('status',
+               default='deploy_manager.resources.status:HealthResource',
+               help='HealthResource controller')
+    #cfg.StrOpt('ip_changer',
+    #           default='deploy_manager.resources.firewall:FirewallAddressResource',
+    #           help='FirewallAddressResource controller'),
+    #cfg.StrOpt('firewall_device',
+    #           default='deploy_manager.resources.firewall:FirewallDeviceResource',
+    #           help='FirewallDeviceResource controller'),
 ]
 
 backends_opts = [
