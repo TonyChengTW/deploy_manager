@@ -30,8 +30,5 @@ class BackendManager(object):
     def __init__(self):
         self._ip_manager = loader.ip_manager_driver()
 
-    def set_ip_by_mac(self, index=0, identity=None, selector=None):
-        if selector is None:
-            self._ip_manager.use(index=index, identity=identity)
-        else:
-            self._firewall.use(**selector.select())
+    def on_get(self, req, resp, **kwargs):
+        return self._ip_manager.on_get_ipmac(req, resp)

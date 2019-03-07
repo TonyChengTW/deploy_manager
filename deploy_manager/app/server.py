@@ -10,6 +10,7 @@ from deploy_manager.resources import firewall
 from deploy_manager import config
 from deploy_manager.driver import loader
 from deploy_manager.backends.manager import BackendManager
+import pdb
 
 
 LOG = log.getLogger(__name__)
@@ -40,12 +41,11 @@ def launch(config_file=None):
     status = simport.load(CONF.dispatcher.status)()
     app.add_route("/status", status)
 
+    #pdb.set_trace()
     ip_mapper = BackendManager()
     app.add_route("/ip_mapper", ip_mapper)
-    #firewall_address = simport.load(CONF.dispatcher.firewall_address)(mgr)
-    #app.add_route("/firewall/address", firewall_address)
 
-    LOG.info('Dispatcher drivers have been added to the routes!')
+    LOG.info('Drivers have been added to the routes!')
     return app
 
 def get_wsgi_app(config_base_path=None, **kwargs):

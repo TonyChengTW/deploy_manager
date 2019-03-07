@@ -1,7 +1,18 @@
 CHANGES
 =======
 
+* add an falcon.add_route on ip_mapper which is called by stevedore loader
+* refector dispatcher
+* remove hostname_manager and upgrade_manager
+* test multiple config
+* change configuration to list
+* add a deploy_tester.py
+* refactor stevedore driver
+* change namespace in entrypoint
+* add netmiko module
+* add pbr requirement
+* cleanup some egg
 * use pbr to install
-* add find\_package()
+* add find_package()
 * refactor with uncomplete
 * IaaS API upload
