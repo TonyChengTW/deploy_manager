@@ -10,6 +10,12 @@ default_opts = [
     cfg.StrOpt('name',
                 default='deploy_manager',
                 help='Process name.'),
+    cfg.StrOpt('listen_ip',
+               default='0.0.0.0',
+               help='binding service ip'),
+    cfg.StrOpt('listen_port',
+               default='7878',
+               help='binding service port')
 ]
 
 database_opts = [

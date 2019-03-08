@@ -33,12 +33,6 @@ def launch(config_file=None):
 
     LOG.info('Creating falcon API ...')
 
-    #db = "mysql+pymysql://{0}:{1}@{2}:{3}/{4}".format(
-    #        CONF.database.username, CONF.database.password,
-    #        CONF.database.address, CONF.database.port, CONF.database.database_name)
-    #mgr = DBManager(db)
-    #mgr.setup()
-
     app = falcon.API()
     status = simport.load(CONF.dispatcher.status)()
     app.add_route("/status", status)
@@ -53,8 +47,11 @@ def launch(config_file=None):
 def get_wsgi_app(config_base_path=None, **kwargs):
     return launch()
 
-if __name__ == '__main__':
+def main():
     from wsgiref import simple_server
     httpd = simple_server.make_server('0.0.0.0', 7878, get_wsgi_app())
     LOG.info('Starting server %s at %s:%s',httpd,'0.0.0.0',7878)
     httpd.serve_forever()
+
+if __name__ == '__main__':
+    main()
