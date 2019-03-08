@@ -4,3 +4,4 @@ lib/
 local/
 build/
 *.egg-info*/
+.eggs/

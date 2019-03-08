@@ -1,3 +1,7 @@
+# Copyright 2019 104 Job Bank Inc. All rights reserved
+# Version: 0.1
+# tony.cheng@104.com.tw
+
 from oslo_log import log
 from stevedore import driver
 

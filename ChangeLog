@@ -1,6 +1,8 @@
 CHANGES
 =======
 
+* add ip mac mapping function
+* implement on_get() in ip_manager
 * add an falcon.add_route on ip_mapper which is called by stevedore loader
 * refector dispatcher
 * remove hostname_manager and upgrade_manager

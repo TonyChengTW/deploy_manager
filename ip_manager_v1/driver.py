@@ -1,3 +1,7 @@
+# Copyright 2019 104 Job Bank Inc. All rights reserved
+# Version: 0.1
+# tony.cheng@104.com.tw
+
 import falcon
 import urllib3
 from netmiko import Netmiko
@@ -14,9 +18,10 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 class Driver(object):
 
     def __init__(self, conf):
-        self._load_conf(conf)
+        self._conf = conf
+        self._load_conf()
 
-    def _load_conf(self, conf):
+    def _load_conf(self):
         identities_opts = [
             cfg.StrOpt('hosts',
                        help='node list'),
@@ -30,23 +35,34 @@ class Driver(object):
             cfg.StrOpt('ssh_password', default='password', help='eee')
             ]
 
-        conf.register_opts(identities_opts, group='identities')
-        conf.register_opts(nodes_opts, group='node1')
+        self._conf.register_opts(identities_opts, group='identities')
+        self._conf.register_opts(nodes_opts, group='node1')
 
-        identities_hosts_str = conf.identities.hosts
-        hosts = [x for x in identities_hosts_str.split(',')]
-        self.hosts = hosts
+        identities_hosts_str = self._conf.identities.hosts
+        self.hosts = [x for x in identities_hosts_str.split(',')]
 
-        self.myip = conf.node1.ip
+        self.nodes = {}
+        for group_nodes_opts in self.hosts:
+            self._conf.register_opts(nodes_opts, group=group_nodes_opts)
+            node_value = self._conf.get(group_nodes_opts).mac
+            self.nodes[group_nodes_opts] = node_value
 
     def on_get_ipmac(self, req, resp, **kwargs):
-        #pdb.set_trace()
-        try:
-            if True:
-                jsonbody = 'myip = ' + self.myip
+        # pdb.set_trace()
+        my_ip = ''
+        for node, value in self.nodes.iteritems():
+            if req.params['mac'] in value:
+                my_ip = self._conf.get(node).ip
+                # my_ssh_port = self._conf.get(node).ssh_port
+                # my_ssh_account = self._conf.get(node).ssh_account
+                # my_ssh_password = self._conf.get(node).ssh_password
+                jsonbody = my_ip
                 resp.body = json.dumps(jsonbody)
                 resp.status = falcon.HTTP_200
-        except:
+                break
+        if not my_ip:
+            jsonbody = "MAC address not found in ip_manager.ini"
+            LOG.warn(jsonbody)
+            resp.body = json.dumps(jsonbody)
             resp.status = falcon.HTTP_404
-        finally:
-            return resp
+#         return resp
