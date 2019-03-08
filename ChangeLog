@@ -1,20 +1,21 @@
 CHANGES
 =======
 
+* setup a real node mac address in etc/backends/ip\_manager.ini
 * add ip mac mapping function
-* implement on_get() in ip_manager
-* add an falcon.add_route on ip_mapper which is called by stevedore loader
+* implement on\_get() in ip\_manager
+* add an falcon.add\_route on ip\_mapper which is called by stevedore loader
 * refector dispatcher
-* remove hostname_manager and upgrade_manager
+* remove hostname\_manager and upgrade\_manager
 * test multiple config
 * change configuration to list
-* add a deploy_tester.py
+* add a deploy\_tester.py
 * refactor stevedore driver
 * change namespace in entrypoint
 * add netmiko module
 * add pbr requirement
 * cleanup some egg
 * use pbr to install
-* add find_package()
+* add find\_package()
 * refactor with uncomplete
 * IaaS API upload

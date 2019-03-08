@@ -57,6 +57,6 @@ def get_wsgi_app(config_base_path=None, **kwargs):
 
 if __name__ == '__main__':
     from wsgiref import simple_server
-    httpd = simple_server.make_server('127.0.0.1', 7878, get_wsgi_app())
-    LOG.info('Starting server %s at %s:%s',httpd,'127.0.0.1',7878)
+    httpd = simple_server.make_server('0.0.0.0', 7878, get_wsgi_app())
+    LOG.info('Starting server %s at %s:%s',httpd,'0.0.0.0',7878)
     httpd.serve_forever()
