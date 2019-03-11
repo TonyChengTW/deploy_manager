@@ -1,0 +1,13 @@
+[Unit]
+Description=deploy_manager
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/deploy_u18/deploy_manager
+ExecStart=/deploy_u18/deploy_manager/bin/python /deploy_u18/deploy_manager/bin/deploy_manager
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

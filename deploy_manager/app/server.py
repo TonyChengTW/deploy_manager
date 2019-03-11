@@ -34,8 +34,8 @@ def launch(config_file=None):
     LOG.info('Creating falcon API ...')
 
     app = falcon.API()
-    status = simport.load(CONF.dispatcher.status)()
-    app.add_route("/status", status)
+    #status = simport.load(CONF.dispatcher.status)()
+    #app.add_route("/status", status)
 
     #pdb.set_trace()
     ip_mapper = BackendManager()
