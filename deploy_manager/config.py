@@ -32,17 +32,17 @@ database_opts = [
                help='Used database name'),
     ]
 
-dispatcher_opts = [
-    cfg.StrOpt('status',
-               default='deploy_manager.resources.status:HealthResource',
-               help='HealthResource controller')
+#dispatcher_opts = [
+    #cfg.StrOpt('status',
+    #           default='deploy_manager.resources.status:HealthResource',
+    #           help='HealthResource controller')
     #cfg.StrOpt('ip_changer',
     #           default='deploy_manager.resources.firewall:FirewallAddressResource',
     #           help='FirewallAddressResource controller'),
     #cfg.StrOpt('firewall_device',
     #           default='deploy_manager.resources.firewall:FirewallDeviceResource',
     #           help='FirewallDeviceResource controller'),
-]
+#]
 
 backends_opts = [
     cfg.StrOpt('ip_manager_driver', default='ipv4', help='The ipv4 plugin will use'),
@@ -59,5 +59,5 @@ def init(args=None, config_file=None):
 
     cfg.CONF.register_opts(default_opts)
     cfg.CONF.register_opts(database_opts, group='database')
-    cfg.CONF.register_opts(dispatcher_opts, group='dispatcher')
+    #cfg.CONF.register_opts(dispatcher_opts, group='dispatcher')
     cfg.CONF.register_opts(backends_opts, group='backends')
