@@ -41,6 +41,7 @@ class Driver(object):
         identities_hosts_str = self._conf.identities.hosts
         identities_hosts_str = identities_hosts_str.replace('\n','')
         identities_hosts_str = identities_hosts_str.replace(' ','')
+        identities_hosts_str = identities_hosts_str.replace('\\','')
         self.hosts = [x for x in identities_hosts_str.split(',')]
 
         self.nodes = {}
