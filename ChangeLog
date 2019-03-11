@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* change mac address in ini
 * remove config options
 * add server config files
 * add pxelinux.cfg(default)
