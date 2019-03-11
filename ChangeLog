@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* add server config files
 * add pxelinux.cfg(default)
 * fix ks.cfg & change_ip.sh
 * remove dispatch mechenism

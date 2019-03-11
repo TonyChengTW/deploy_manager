@@ -4,7 +4,7 @@
 
 import falcon
 import urllib3
-from netmiko import Netmiko
+# from netmiko import Netmiko
 from oslo_log import log
 from oslo_config import cfg
 import json
@@ -30,9 +30,9 @@ class Driver(object):
         nodes_opts = [
             cfg.StrOpt('ip', default='0.0.0.0', help='aaa'),
             cfg.StrOpt('mac', default='00:00:00:00:00:00', help='bbb'),
-            cfg.StrOpt('ssh_port', default='22', help='ccc'),
-            cfg.StrOpt('ssh_account', default='root', help='ddd'),
-            cfg.StrOpt('ssh_password', default='password', help='eee')
+            # cfg.StrOpt('ssh_port', default='22', help='ccc'),
+            # cfg.StrOpt('ssh_account', default='root', help='ddd'),
+            # cfg.StrOpt('ssh_password', default='password', help='eee')
             ]
 
         self._conf.register_opts(identities_opts, group='identities')

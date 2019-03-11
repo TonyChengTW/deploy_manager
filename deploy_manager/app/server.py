@@ -8,7 +8,7 @@ import sys
 
 from oslo_log import log
 from deploy_manager.utils import simport
-from deploy_manager.resources import status
+# from deploy_manager.resources import status
 from deploy_manager import config
 from deploy_manager.driver import loader
 from deploy_manager.backends.manager import BackendManager
@@ -34,8 +34,8 @@ def launch(config_file=None):
     LOG.info('Creating falcon API ...')
 
     app = falcon.API()
-    #status = simport.load(CONF.dispatcher.status)()
-    #app.add_route("/status", status)
+    # status = simport.load(CONF.dispatcher.status)()
+    # app.add_route("/status", status)
 
     #pdb.set_trace()
     ip_mapper = BackendManager()
