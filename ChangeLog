@@ -1,6 +1,8 @@
 CHANGES
 =======
 
+* fix slash character in config file
+* fix identities hosts string with space and new line
 * change mac address in ini
 * remove config options
 * add server config files

@@ -18,9 +18,14 @@ echo "MY_IP_IS_SET=$MY_IP_IS_SET"
 
 if [ $MY_IP_IS_SET -eq 1 ]; then
     crontab -r
+    #reboot
 else
-    ip address add $MY_MGMT_IP/24 dev $MY_DEV
+    sed -i "s/MY_MGMT_IP_CIDR/$MY_MGMT_IP\/24/" /root/50-cloud-init.yaml
+    mv /root/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml
+    rm /etc/netplan/01-netcfg.yaml
+    sudo netplan apply
+    #ip address add $MY_MGMT_IP/24 dev $MY_DEV
     systemctl restart sshd
     sed -i 's/192.168.178.178/10.0.0.71/g' /etc/apt/sources.list
-    apt -y update
+    #apt -y update
 fi
