@@ -1,0 +1,12 @@
+network:
+    version: 2
+    renderer: networkd
+    ethernets:
+        eth0:
+            addresses:
+            - MY_MGMT_IP_CIDR
+            dhcp4: false
+            dhcp6: false
+            nameservers:
+                addresses: []
+                search: []
