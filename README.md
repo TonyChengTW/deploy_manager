@@ -40,12 +40,12 @@ mac = 00:0c:29:a8:7c:5c
 ip = 10.0.0.122
 mac = 00:0c:29:3c:6e:bd
 ```
+You need to fillup both [identities] and [xxx] group options in deploy server, which xxx is the hostname.
 
 ## Example in client side
 ```curl http://[deploy_server]:7878/ip_mapper?mac=00:0c:29:a8:7c:5c```
-It will return an IP which is matched an node : 10.0.0.121
+It will return an IP which is matched a mac address on node : 10.0.0.121
 
-You need to filliup both [identities] and [xxx] group options, which xxx is the hostname.
 
 ## KickStart configuration
 The Kckstart config file is located in
